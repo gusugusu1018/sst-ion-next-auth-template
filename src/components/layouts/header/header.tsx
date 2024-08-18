@@ -1,10 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import UserButton from "./userButton";
-import { MainNav } from "./main-nav";
 import DarkModeDropDown from "./dark-mode-dropdown";
 import Image from "next/image";
-const Header = () => {
+import { auth } from "@/auth";
+import MainNav from "./main-nav";
+
+const Header = async () => {
+  const session = await auth();
   return (
     <div className="px-8 py-6 flex items-center justify-between">
       <Link
@@ -21,8 +24,8 @@ const Header = () => {
         SST ion Next auth
       </Link>
       <div className="flex items-center gap-4">
-        <MainNav />
-        <UserButton />
+        <MainNav session={session} />
+        <UserButton session={session} />
         <DarkModeDropDown />
       </div>
     </div>

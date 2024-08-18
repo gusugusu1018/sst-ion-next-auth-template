@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import SstLogo from "@/components/sst-logo";
 import { Button } from "@/components/ui/button";
 import { GetStarted } from "@/features/authentication/auth-components";
@@ -5,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
+  const session = await auth();
   return (
     <>
       <div className="flex flex-grow flex-col items-center justify-center space-y-4">
@@ -23,7 +25,12 @@ export default async function Home() {
           14 Auth.js, AWS Cognito.
         </p>
         <div className="flex flex-row gap-5">
-          <GetStarted />
+          {session && (
+            <Button asChild>
+              <Link href="/protected-page/session">Session </Link>
+            </Button>
+          )}
+          {!session && <GetStarted />}
           <Button asChild variant="destructive">
             <Link href="https://github.com/gusugusu1018/sst-ion-next-auth-template">
               Source code

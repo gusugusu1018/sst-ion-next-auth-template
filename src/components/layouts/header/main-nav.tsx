@@ -7,8 +7,14 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import React from "react";
+import { Session } from "next-auth";
 
-export function MainNav() {
+interface MainNavProps {
+  session: Session | null;
+}
+
+const MainNav: React.FC<MainNavProps> = ({ session }) => {
+  console.log(session);
   return (
     <div className="flex gap-4 items-center">
       <NavigationMenu>
@@ -21,19 +27,21 @@ export function MainNav() {
               Resources
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              href="/protected-page/session"
-              className={navigationMenuTriggerStyle()}
-            >
-              Session
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+          {session && (
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href="/protected-page/session"
+                className={navigationMenuTriggerStyle()}
+              >
+                Session
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          )}
         </NavigationMenuList>
       </NavigationMenu>
     </div>
   );
-}
+};
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -60,3 +68,5 @@ const ListItem = React.forwardRef<
   );
 });
 ListItem.displayName = "ListItem";
+
+export default MainNav;

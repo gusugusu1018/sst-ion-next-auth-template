@@ -9,11 +9,13 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { GetStarted, SignOut } from "@/features/authentication/auth-components";
 import Link from "next/link";
-import { auth } from "@/auth";
-import Image from "next/image";
+import { Session } from "next-auth";
 
-export default async function UserButton() {
-  const session = await auth();
+interface UserButtonProps {
+  session: Session | null;
+}
+
+const UserButton: React.FC<UserButtonProps> = ({ session }) => {
   if (!session?.user) return <GetStarted />;
 
   return (
@@ -63,4 +65,6 @@ export default async function UserButton() {
       </DropdownMenu>
     </div>
   );
-}
+};
+
+export default UserButton;
