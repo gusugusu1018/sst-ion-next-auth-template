@@ -21,7 +21,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     authorized({ request, auth }) {
       try {
         const { pathname } = request.nextUrl;
-        if (pathname === "/protected-page") return !!auth;
+        console.log(pathname);
+        if (pathname.startsWith("/protected-page")) return !!auth;
         return true;
       } catch (err) {
         console.log(err);
