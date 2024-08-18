@@ -49,16 +49,6 @@ const UserButton: React.FC<UserButtonProps> = ({ session }) => {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuItem>
-            <Button asChild variant="ghost" className="w-full p-0">
-              <Link href="/authentication/login">Login</Link>
-            </Button>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Button asChild variant="ghost" className="w-full p-0">
-              <Link href="/authentication/sign-up">Sign up</Link>
-            </Button>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
             <SignOut />
           </DropdownMenuItem>
         </DropdownMenuContent>
