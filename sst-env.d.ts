@@ -11,6 +11,10 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
+    "Table": {
+      "name": string
+      "type": "sst.aws.Dynamo"
+    }
     "UserPool": {
       "id": string
       "type": "sst.aws.CognitoUserPool"

@@ -1,7 +1,7 @@
 /// <reference path="../.sst/platform/config.d.ts" />
 
-import { table } from "console";
 import { authUrl, userPool, webClient } from "./auth";
+import { table } from "./database";
 import { secret } from "./secret";
 
 const commonConfig = {

@@ -34,7 +34,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Roadmap
 
 - [x] Dark mode
-- [ ] DynamoDB adapter
+- [x] DynamoDB adapter
 - [ ] Google provider
 - [ ] Github provider
 
